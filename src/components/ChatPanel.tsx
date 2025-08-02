@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Send, Bot, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,6 +26,17 @@ export function ChatPanel({ className = "" }: ChatPanelProps) {
     }
   ]);
   const [inputValue, setInputValue] = useState("");
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to bottom when new messages are added
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+      const scrollContainer = scrollAreaRef.current.querySelector('[data-radix-scroll-area-viewport]');
+      if (scrollContainer) {
+        scrollContainer.scrollTop = scrollContainer.scrollHeight;
+      }
+    }
+  }, [messages]);
 
   const handleSend = () => {
     if (!inputValue.trim()) return;
@@ -71,7 +82,7 @@ export function ChatPanel({ className = "" }: ChatPanelProps) {
       </div>
 
       {/* Messages Area */}
-      <ScrollArea className="flex-1 min-h-0 p-4">
+      <ScrollArea ref={scrollAreaRef} className="flex-1 min-h-0 p-4">
         <div className="space-y-4">
           {messages.map((message) => (
             <div key={message.id} className="flex gap-3">

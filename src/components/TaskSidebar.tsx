@@ -34,43 +34,62 @@ export function TaskSidebar({ tasks = [], onNewTask }: TaskSidebarProps) {
       </div>
 
       {/* Task History Section */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col min-h-0">
         <div className="p-4 border-b border-panel-border">
           <h2 className="text-sm font-medium text-muted-foreground mb-3 flex items-center gap-2">
             <History className="h-4 w-4" />
             Task History
           </h2>
         </div>
+        
+        <ScrollArea className="flex-1 min-h-0">
+          <div className="p-4 space-y-2">
+            {taskList.map((task) => (
+              <div
+                key={task.id}
+                className="p-2 rounded-md hover:bg-muted/50 cursor-pointer transition-colors"
+              >
+                <div className="text-sm text-foreground font-medium line-clamp-2">
+                  {task.title}
+                </div>
+                <div className="text-xs text-muted-foreground mt-1">
+                  {task.date}
+                </div>
+              </div>
+            ))}
+          </div>
+        </ScrollArea>
 
         {/* Library Section */}
-        <div className="p-4 border-b border-panel-border">
-          <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
-            <FolderOpen className="h-4 w-4" />
-            Library
-          </h3>
-          <ScrollArea className="h-48">
-            <div className="space-y-2">
-              {taskList.map((task) => (
-                <div
-                  key={task.id}
-                  className="p-2 rounded-md hover:bg-muted/50 cursor-pointer transition-colors"
-                >
-                  <div className="text-sm text-foreground font-medium line-clamp-2">
-                    {task.title}
-                  </div>
-                  <div className="text-xs text-muted-foreground mt-1">
-                    {task.date}
-                  </div>
-                </div>
-              ))}
+        <div className="border-t border-panel-border">
+          <div className="p-4 border-b border-panel-border">
+            <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+              <FolderOpen className="h-4 w-4" />
+              Library
+            </h3>
+          </div>
+          <ScrollArea className="h-32">
+            <div className="p-4 space-y-2">
+              <div className="text-xs text-muted-foreground">
+                Uploaded files will appear here
+              </div>
             </div>
           </ScrollArea>
         </div>
 
-        <div className="p-4">
-          <h3 className="text-sm font-medium text-foreground mb-3">
-            Prompt Gallery
-          </h3>
+        <div className="border-t border-panel-border">
+          <div className="p-4">
+            <h3 className="text-sm font-medium text-foreground mb-3">
+              Prompt Gallery
+            </h3>
+            <ScrollArea className="h-24">
+              <div className="space-y-2">
+                <div className="text-xs text-muted-foreground">
+                  Saved prompts will appear here
+                </div>
+              </div>
+            </ScrollArea>
+          </div>
         </div>
       </div>
 
