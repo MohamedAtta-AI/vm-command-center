@@ -21,12 +21,12 @@ const Index = () => {
       <VNCPanel className="flex-1" />
       
       {/* Right Panel - Chat and File Management */}
-      <div className="w-96 flex flex-col">
+      <div className="w-96 flex flex-col min-h-0">
         {/* Chat Session - Top Half */}
-        <ChatPanel className="flex-1" />
+        <ChatPanel className="flex-1 min-h-0" />
         
         {/* File Management - Bottom Half */}
-        <FilePanel className="h-80 border-t border-panel-border" />
+        <FilePanel className="h-80 flex-shrink-0 border-t border-panel-border" />
       </div>
     </div>
   );

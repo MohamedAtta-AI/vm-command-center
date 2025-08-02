@@ -64,14 +64,14 @@ export function ChatPanel({ className = "" }: ChatPanelProps) {
   };
 
   return (
-    <div className={`bg-chat-background flex flex-col ${className}`}>
+    <div className={`bg-chat-background flex flex-col min-h-0 ${className}`}>
       {/* Chat Header */}
       <div className="p-4 border-b border-panel-border">
         <h3 className="text-sm font-medium text-foreground">Chat Session</h3>
       </div>
 
       {/* Messages Area */}
-      <ScrollArea className="flex-1 p-4">
+      <ScrollArea className="flex-1 min-h-0 p-4">
         <div className="space-y-4">
           {messages.map((message) => (
             <div key={message.id} className="flex gap-3">

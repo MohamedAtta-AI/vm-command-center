@@ -69,7 +69,7 @@ export function FilePanel({ className = "" }: FilePanelProps) {
   };
 
   return (
-    <div className={`bg-card flex flex-col ${className}`}>
+    <div className={`bg-card flex flex-col min-h-0 ${className}`}>
       {/* File Panel Header */}
       <div className="p-4 border-b border-panel-border">
         <h3 className="text-sm font-medium text-foreground mb-3">File Management</h3>
@@ -107,7 +107,7 @@ export function FilePanel({ className = "" }: FilePanelProps) {
           </h4>
         </div>
         
-        <ScrollArea className="flex-1 px-4">
+        <ScrollArea className="flex-1 min-h-0 px-4">
           <div className="space-y-2 pb-4">
             {files.map((file) => (
               <Card key={file.id} className="p-3 hover:bg-muted/30 transition-colors cursor-pointer">
