@@ -1,11 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { TaskSidebar } from "@/components/TaskSidebar";
+import { VNCPanel } from "@/components/VNCPanel";
+import { ChatPanel } from "@/components/ChatPanel";
+import { FilePanel } from "@/components/FilePanel";
 
 const Index = () => {
+  const [selectedTask, setSelectedTask] = useState<string | null>(null);
+
+  const handleNewTask = () => {
+    console.log("Starting new agent task...");
+    // Here you would implement the logic to start a new task
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="h-screen bg-background flex overflow-hidden">
+      {/* Left Sidebar - Task History */}
+      <TaskSidebar onNewTask={handleNewTask} />
+      
+      {/* Middle Panel - VNC Connection */}
+      <VNCPanel className="flex-1" />
+      
+      {/* Right Panel - Chat and File Management */}
+      <div className="w-96 flex flex-col">
+        {/* Chat Session - Top Half */}
+        <ChatPanel className="flex-1" />
+        
+        {/* File Management - Bottom Half */}
+        <FilePanel className="h-80 border-t border-panel-border" />
       </div>
     </div>
   );

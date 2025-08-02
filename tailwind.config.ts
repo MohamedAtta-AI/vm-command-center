@@ -52,6 +52,19 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				vnc: {
+					background: 'hsl(var(--vnc-background))'
+				},
+				agent: {
+					blue: 'hsl(var(--agent-blue))',
+					'blue-hover': 'hsl(var(--agent-blue-hover))'
+				},
+				chat: {
+					background: 'hsl(var(--chat-background))'
+				},
+				panel: {
+					border: 'hsl(var(--panel-border))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
